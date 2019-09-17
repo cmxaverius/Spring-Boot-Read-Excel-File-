@@ -1,0 +1,5 @@
+com\task\importExcel\ImportExcelApplication.class
+com\task\importExcel\dao\InspectRepository.class
+com\task\importExcel\model\Inspect.class
+com\task\importExcel\dao\SamplingDataRepositoy.class
+com\task\importExcel\model\SamplingData.class

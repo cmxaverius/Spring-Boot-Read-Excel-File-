@@ -1,0 +1,116 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+
+    <title>Upload Status</title>
+    
+
+	<script th:src="@{/js/jquery-3.3.1.slim.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/popper.min.js}"></script>
+	
+</head>
+
+<body>
+
+<div class="container-fluid">
+<h2 align="center">过程固体物料分析报告单</h2><br>
+	
+	
+	<div th:if="${not #lists.isEmpty(inspect)}">
+			<table class="table">
+			  <thead class="thead-dark">
+			    <tr>
+			      <th scope="col">检测人:</th>
+			      <th scope="col">送样日期</th>
+			      <th scope="col">发报告日期</th> 
+			      <th scope="col">审核人</th>
+			      <th scope="col">加样数据:</th>
+			    </tr>
+			  </thead>
+			  <tbody>	
+			    <tr th:each="inspects : ${inspect}">		   
+			      <td th:text="${inspects.InspectorName}"></td>
+			      <td th:text="${inspects.SamplingDate}"></td>
+			      <td th:text="${inspects.ReportDate}"></td>
+			      <td th:text="${inspects.ReviewerName}"></td>
+			      <td th:text="${inspects.AdditionalData}"></td>
+			    </tr>  
+			    	
+			  </tbody>
+			</table>
+		</div>
+		<br><br> 
+
+		
+		<div th:if="${not #lists.isEmpty(sampling)}">
+			<table class="table">
+			  <thead class="thead-dark">
+			    <tr>
+			      <th scope="col">物料名称</th>
+			      <th scope="col">样品编号</th>
+			      <th scope="col">Al2O3 (%)</th>
+			      <th scope="col">SiO2 (%)</th>
+			      <th scope="col">Fe2O3 (%)</th>
+			      <th scope="col">TiO2 (%)</th>
+			      <th scope="col">CaO (%)</th>
+			      <th scope="col">MgO (%)</th>
+			      <th scope="col">A/S</th>
+			      <th scope="col">Na2O (%)</th>
+			      <th scope="col">Ca/S</th>
+			      <th scope="col">N/S</th>
+			      <th scope="col">酸溶硅 (%)</th>
+			      <th scope="col">K2O</th>
+			      <th scope="col">C</th>
+			      <th scope="col">S</th>
+			      <th scope="col">水份</th>			      
+			      <th scope="col">CaOT (%)</th>
+			      <th scope="col">CaOf (%)</th>
+			      <th scope="col">CO2</th>				    
+			      <th scope="col">灼碱</th>
+			      <th scope="col">备注</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+		
+			    <tr th:each="samplings : ${sampling}">		   
+			      <td th:text="${samplings.MaterialName}" style=" font-weight: bold;"></td>
+			      <td th:text="${samplings.SamplingDate}"></td>
+			      <td th:text="${samplings.AI203}"></td>
+			      <td th:text="${samplings.SiO2}"></td>
+			      <td th:text="${samplings.Fe203}"></td>
+			      <td th:text="${samplings.TiO2}"></td>
+			      <td th:text="${samplings.CaO}"></td>
+			      <td th:text="${samplings.MgO}"></td>
+			      <td th:text="${samplings.AdivideS}"></td>
+			      <td th:text="${samplings.Na2O}"></td>
+			      <td th:text="${samplings.CadivideS}"></td>
+			      <td th:text="${samplings.NdivideS}"></td>
+			      <td th:text="${samplings.AcidSilicon}"></td>
+			      <td th:text="${samplings.K2O}"></td>
+			      <td th:text="${samplings.C}"></td>
+			      <td th:text="${samplings.S}"></td>
+			      <td th:text="${samplings.Water}"></td>		      
+			      <td th:text="${samplings.CaOT}"></td>
+			      <td th:text="${samplings.CaOf}"></td>
+			      <td th:text="${samplings.CO2}"></td>
+			      <td th:text="${samplings.CausticSoda}"></td>
+			      <td th:text="${samplings.Remarks}"></td>		      			      
+			    </tr>			    	
+			  </tbody>
+			</table>
+		</div>
+		<div>
+		 	<a class="btn btn-primary" href="/upload-file">添加</a>
+	   </div>	
+		
+</div>
+
+
+
+
+
+
+</body>
+</html>

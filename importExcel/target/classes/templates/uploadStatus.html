@@ -1,0 +1,54 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+
+    <title>Upload Status</title>
+    
+
+	<script th:src="@{/js/jquery-3.3.1.slim.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/popper.min.js}"></script>
+	
+</head>
+
+<body>
+
+<div class="container">
+	<h1>Spring Boot - Upload Status</h1>
+
+	<div th:if="${message}">
+	    <h2 th:text="${message}"></h2>
+	</div>
+	
+	
+	<form method="POST" th:action="@{/import}" th:object="${employee}">
+		<table class="table">
+		  <thead class="thead-dark">
+		    <tr>
+		      <th scope="col">First Name</th>
+		      <th scope="col">Last Name</th>
+		    </tr>
+		  </thead>
+		<tbody>
+		<tr th:each="employees,itemStat  : ${employee}">
+			
+		    <td>
+		    	<input hidden th:name="|employees[${itemStat.index}].id|"/>
+		    	<input type="text" th:name="|employees[${itemStat.index}].firstName|" th:value="${employees.getDate()}">
+		    </td>
+		    <td>
+		    	<input type="text" th:name="|employees[${itemStat.index}].lastName|" th:value="${employees.getName()}">
+		    </td>
+		</tr>
+		</tbody>
+		</table>
+		<br>
+		<input type="submit" value="Update All">
+	</form>
+			
+	
+</div>
+
+</body>
+</html>
